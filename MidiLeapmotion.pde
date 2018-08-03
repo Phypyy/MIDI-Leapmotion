@@ -1,8 +1,6 @@
 import de.voidplus.leapmotion.*;
 LeapMotion leap;
 
-
-
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -19,10 +17,8 @@ float dh;
 
 void setup() {
   size(500, 400, P3D); 
-  //spout = new Spout(this);
-  //spout.createSender("ProSong");
   minim = new Minim(this);
-  song = minim.loadFile("Name of Love.mp3");
+  song = minim.loadFile("song_name.mp3");
   song.play();
   fft = new FFT(song.bufferSize(), song.sampleRate());
 
@@ -113,8 +109,6 @@ void draw() {
           line(i, 150 + song.left.get(i)*dh, i+1, 150 - song.left.get(i+1)*dh);
         }
       }
-     // spout.sendTexture();
-      println(dh);
     }
   }
 }
