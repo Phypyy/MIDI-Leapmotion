@@ -1,8 +1,7 @@
 import de.voidplus.leapmotion.*;
 LeapMotion leap;
 
-import spout.*;
-Spout spout;
+
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -13,19 +12,18 @@ import ddf.minim.ugens.*;
 
 Minim minim;
 AudioPlayer song;
-AudioPlayer song2;
+
 FFT fft;
 
 float dh;
 
 void setup() {
   size(500, 400, P3D); 
-  spout = new Spout(this);
-  spout.createSender("ProSong");
+  //spout = new Spout(this);
+  //spout.createSender("ProSong");
   minim = new Minim(this);
   song = minim.loadFile("Name of Love.mp3");
-  song2 = minim.loadFile("Name of Love.mp3");
-  song2.play();
+  song.play();
   fft = new FFT(song.bufferSize(), song.sampleRate());
 
   leap = new LeapMotion(this);
@@ -106,16 +104,16 @@ void draw() {
         break;
       }
       dh = handPosition.y/4;
-      fft.forward(song2.mix);
+      fft.forward(song.mix);
       for (int i = 0; i < fft.specSize(); i++) {
         if (handGrab == 1) {
           stroke(0);
         } else {
           stroke(255, 255, 0);
-          line(i, 150 + song2.left.get(i)*dh, i+1, 150 - song2.left.get(i+1)*dh);
+          line(i, 150 + song.left.get(i)*dh, i+1, 150 - song.left.get(i+1)*dh);
         }
       }
-      spout.sendTexture();
+     // spout.sendTexture();
       println(dh);
     }
   }

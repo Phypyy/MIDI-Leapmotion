@@ -1,7 +1,7 @@
 #Control MIDI by Leap Motion 
 -------------
 
- - import minim from Minim 
+ - Library Minim 
 
  - song = minim.loadFile("song_name.mp3"); //"song_name" is a song in data file. You can download file.mp3 and put it in (" "). 
 
